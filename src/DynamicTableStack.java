@@ -8,6 +8,7 @@ public class DynamicTableStack
 {
         public Object [] stack = new Object[0];
         public int MAX_SIZE;
+        public int size = 0;
         public DynamicTableStack(int MAX_SIZE)
         {
                 assert MAX_SIZE > 0 : "The size has to be greater than 0";
@@ -16,16 +17,9 @@ public class DynamicTableStack
         }
         public void push(Object value)
         {
-                int empties = 0 ;
-                for (Object aStack : stack) {
-                        if (aStack == null)
-                        {
-                                empties++;
-                        }
 
-                }
-              //  System.out.println("empty "+ empties);
-              if(empties<=stack.length/4)
+                System.out.println("dlugos" + stack.length);
+              if(MAX_SIZE*3/4<size)
               {
                       Object extendedStack [] = new Object[stack.length*2];
                       for(int i = 0; i< stack.length; i++)
@@ -33,8 +27,9 @@ public class DynamicTableStack
                             extendedStack[i] = stack[i];
                       }
                       stack = extendedStack;
+                      MAX_SIZE=MAX_SIZE*2;
               }
-                else if(empties > stack.length*3/4)
+                else if(MAX_SIZE*2/10>size)
               {
                       Object minishedStack [] = new Object[stack.length/2];
                       for(int i = 0; i< minishedStack.length; i++)
@@ -42,7 +37,9 @@ public class DynamicTableStack
                               minishedStack[i] = stack[i];
                       }
                       stack = minishedStack;
+                      MAX_SIZE=MAX_SIZE/2;
               }
+                size++;
                 for(int i = 0; i< stack.length; i++)
                 {
                        if(stack[i]==null)

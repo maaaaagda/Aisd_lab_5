@@ -6,7 +6,7 @@ public class Main
     public static void main (String [] args) {
 
 
-        DynamicTableStack d = new DynamicTableStack(20);
+        DynamicTableStack d = new DynamicTableStack(10);
         d.printStack();
         d.push(10);
         d.printStack();
@@ -17,6 +17,7 @@ public class Main
         d.push(1011);
         d.printStack();
         d.push(1111);
+        d.printStack();
         System.out.println("Po dodaniu elementu: 1111");
         d.printStackClear();
         System.out.println("Zdejmuje element:: " +d.pop());
